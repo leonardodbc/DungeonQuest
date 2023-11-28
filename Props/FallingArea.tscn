@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0iugfd7scqog"]
+
+[ext_resource type="Script" path="res://Scripts/FallingArea.cs" id="1_v0a48"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_42iki"]
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hxcf0"]
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e30hu"]
+size = Vector3(2, 0.11, 2)
+
+[node name="FallingArea" type="Node3D"]
+script = ExtResource("1_v0a48")
+
+[node name="Control" type="Node3D" parent="."]
+
+[node name="Mesh" type="MeshInstance3D" parent="Control"]
+mesh = SubResource("BoxMesh_42iki")
+skeleton = NodePath("../Area3D")
+
+[node name="StaticBody" type="StaticBody3D" parent="Control/Mesh"]
+
+[node name="Collision" type="CollisionShape3D" parent="Control/Mesh/StaticBody"]
+shape = SubResource("BoxShape3D_hxcf0")
+
+[node name="Area3D" type="Area3D" parent="Control"]
+
+[node name="Collision" type="CollisionShape3D" parent="Control/Area3D"]
+shape = SubResource("BoxShape3D_e30hu")
+
+[connection signal="body_entered" from="Control/Area3D" to="." method="_on_area_3d_body_entered"]

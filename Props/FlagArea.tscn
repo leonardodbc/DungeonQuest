@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://dk5ui03jlnpwq"]
+
+[ext_resource type="Script" path="res://Scripts/FlagArea.cs" id="1_tnoxx"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8lqkm"]
+top_radius = 0.03
+bottom_radius = 0.03
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rmo87"]
+albedo_color = Color(0.52549, 0.262745, 0.74902, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d5f6m"]
+size = Vector3(0.05, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b5hrm"]
+albedo_color = Color(0.52549, 0.262745, 0.74902, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5di75"]
+size = Vector3(2, 2, 2)
+
+[node name="FlagArea" type="Area3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_tnoxx")
+
+[node name="SaveText" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.0
+offset_top = 176.0
+offset_right = 141.0
+offset_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Pressione T para salvar o checkpoint"
+
+[node name="Pole" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CylinderMesh_8lqkm")
+surface_material_override/0 = SubResource("StandardMaterial3D_rmo87")
+
+[node name="Flag" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72263, -0.252541)
+mesh = SubResource("BoxMesh_d5f6m")
+surface_material_override/0 = SubResource("StandardMaterial3D_b5hrm")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_5di75")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
