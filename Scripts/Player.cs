@@ -9,9 +9,9 @@ public partial class Player : CharacterBody3D
 	public const float JumpVelocity = 9.5f;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
-	public float gravity = 5f + ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
+	public float gravity = 2f * ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 
-	[Export] public float MouseSensitivity = 0.0008f;
+	[Export] public float MouseSensitivity = 0.0016f;
 	private AnimationTree animations;
 	private AnimationNodeStateMachinePlayback stateMachine;
 
@@ -96,6 +96,7 @@ public partial class Player : CharacterBody3D
 			velocity.Y = JumpVelocity;
 			stateMachine.Travel("Jump_Start");
 			animations.Set("parameters/conditions/grounded", false);
+			
 		}
 
 		return velocity;
