@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cjbsgcal7dkci" path="res://Props/spikeArea.tscn" id="6_w414e"]
 [ext_resource type="PackedScene" uid="uid://dk5ui03jlnpwq" path="res://Props/FlagArea.tscn" id="8_fef61"]
 [ext_resource type="PackedScene" uid="uid://d0iugfd7scqog" path="res://Props/FallingArea.tscn" id="9_k7xhv"]
-[ext_resource type="AudioStream" uid="uid://c77aika6jxpj0" path="res://good-night-160166.mp3" id="11_eb4c5"]
+[ext_resource type="AudioStream" path="res://good-night-160166.mp3" id="11_eb4c5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78irh"]
 bg_color = Color(0, 0, 0, 1)
@@ -73,7 +73,9 @@ sky_material = SubResource("ProceduralSkyMaterial_nvxd5")
 background_mode = 2
 sky = SubResource("Sky_hky81")
 tonemap_mode = 2
-glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.3869
+volumetric_fog_emission_energy = 259.69
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_tdtds")
@@ -170,8 +172,11 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 environment = SubResource("Environment_oqn3m")
 
 [node name="Sun" type="DirectionalLight3D" parent="Map"]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 35, 0)
-shadow_enabled = true
+transform = Transform3D(-0.965998, 0.22391, -0.129275, 3.07801e-08, 0.5, 0.866026, 0.258549, 0.836579, -0.482999, 2.75888, 7.93275, -0.579844)
+light_energy = 0.0
+light_indirect_energy = 0.677
+light_volumetric_fog_energy = 0.515
+light_angular_distance = 0.9
 
 [node name="FlagAreas" type="Node3D" parent="Map"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
