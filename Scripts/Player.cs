@@ -3,37 +3,38 @@ using System;
 
 public partial class Player : CharacterBody3D
 {
-	public Vector3 respawn;
 	public const float Speed = 5.0f;
 	public const float Acceleration = 4.0f;
 	public const float JumpVelocity = 9.5f;
-
-	// Get the gravity from the project settings to be synced with RigidBody nodes.
-	public float gravity = 5f + ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
-
 	[Export] public float MouseSensitivity = 0.0008f;
+	private float _rotationX = 0f;
+	public float gravity = 5f + ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
+	public Vector3 respawn;
 	private AnimationTree animations;
 	private AnimationNodeStateMachinePlayback stateMachine;
-
-	private float _rotationX = 0f;
 	private bool canJump = false;
 	private bool jumping = true;
 	private bool lastFloor = true;
-
 	private bool sprinting = false;
-
 	public override void _Ready()
 	{
+
 		respawn = new Vector3(0, 0, 0);
+
 		animations = GetNode<AnimationTree>("AnimationTree");
 		stateMachine = (AnimationNodeStateMachinePlayback)animations.Get("parameters/playback");
+
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if(GlobalPosition.Y < -10){
-			GlobalPosition = new Vector3(0, 0, 0);
+
+		if (GlobalPosition.Y < -10)
+		{
+
+			GlobalPosition = respawn;
 			GetNode<Label>("%LabelCoin").Call("ResetCounter");
+
 		}
 
 		Vector3 velocity = Velocity;
@@ -66,7 +67,7 @@ public partial class Player : CharacterBody3D
 		if (Input.IsActionJustPressed("dodge")) {
 			int i = 0;
 			while (i < 2){
-				velocity = velocity.Lerp(dir * Speed * 12, + Acceleration * (float)delta);
+				velocity += velocity.Lerp(dir * Speed * 4, + Acceleration * (float)delta);
 				i++;
 			}
 		}
@@ -101,7 +102,7 @@ public partial class Player : CharacterBody3D
 		return velocity;
 	}
 
-	public override void _Input(InputEvent @event)
+	public override void _Input(InputEvent @event) // Câmera fiz
 	{
 		if (Input.IsActionJustPressed("esc"))
 			Input.MouseMode = Input.MouseModeEnum.Visible;

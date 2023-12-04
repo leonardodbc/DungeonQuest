@@ -4,8 +4,13 @@ using System;
 public partial class World : Node3D
 {
 	CanvasLayer pausemenu;
+	Area3D key;
 	public override void _Ready()
 	{
+		key = GetNode<Area3D>("%Key");
+		key.Connect("SignalPlayerHaveKey", new Callable(GetNode<Area3D>("%ChestArea"), "SetKeyTrue") );
+		GetNode<Node3D>("Map").RemoveChild(key);
+
 		pausemenu = GetNode<CanvasLayer>("%PauseMenu");
 		pausemenu.Hide();
 	}
@@ -27,4 +32,10 @@ public partial class World : Node3D
 		GetTree().Paused = false;
 		GetTree().ChangeSceneToFile("res://Menu.tscn");
 	}
+
+	public void addkey()
+	{
+		GetNode<Node3D>("Map").AddChild(key);
+	}
+
 }
