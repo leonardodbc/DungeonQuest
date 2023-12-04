@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c217s3ferwopb"]
+[gd_scene load_steps=29 format=3 uid="uid://c217s3ferwopb"]
 
 [ext_resource type="Texture2D" uid="uid://bamw83vs87xn2" path="res://Assets/coin.png" id="1_b2uym"]
 [ext_resource type="Script" path="res://Scripts/World.cs" id="1_tdtds"]
@@ -6,8 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://dbb6fffo5lneu" path="res://Player/knight.tscn" id="2_dvi6t"]
 [ext_resource type="FontFile" uid="uid://3igy3w4l7dme" path="res://Assets/Sora-Regular.ttf" id="2_etdoi"]
 [ext_resource type="MeshLibrary" uid="uid://dcqqifdqllubi" path="res://Gridmaps/Gridmap_World.tres" id="3_yabu4"]
-[ext_resource type="PackedScene" uid="uid://dq3xmhirja5b4" path="res://Props/coin_area.tscn" id="5_c52tu"]
-[ext_resource type="PackedScene" uid="uid://cjbsgcal7dkci" path="res://Props/spikeArea.tscn" id="6_w414e"]
+[ext_resource type="PackedScene" uid="uid://dq3xmhirja5b4" path="res://Props/CoinArea.tscn" id="5_c52tu"]
+[ext_resource type="PackedScene" uid="uid://c6j2sb4r567fp" path="res://Props/ChestArea.tscn" id="5_lp41q"]
+[ext_resource type="PackedScene" uid="uid://c4joyj8qqvviw" path="res://Props/Key.tscn" id="5_yf80s"]
+[ext_resource type="PackedScene" uid="uid://b2pr80oyynmel" path="res://Props/Lever.tscn" id="6_fymuy"]
+[ext_resource type="PackedScene" uid="uid://cjbsgcal7dkci" path="res://Props/SpikeArea.tscn" id="6_w414e"]
 [ext_resource type="PackedScene" uid="uid://dk5ui03jlnpwq" path="res://Props/FlagArea.tscn" id="8_fef61"]
 [ext_resource type="PackedScene" uid="uid://d0iugfd7scqog" path="res://Props/FallingArea.tscn" id="9_k7xhv"]
 
@@ -172,6 +175,17 @@ environment = SubResource("Environment_oqn3m")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 35, 0)
 shadow_enabled = true
 
+[node name="ChestArea" parent="Map" instance=ExtResource("5_lp41q")]
+unique_name_in_owner = true
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 6, 0, -2.62268e-07)
+
+[node name="Key" parent="Map" instance=ExtResource("5_yf80s")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 15, -5)
+
+[node name="Lever" parent="Map" instance=ExtResource("6_fymuy")]
+transform = Transform3D(-1.09278e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278e-07, -50, 16, 8)
+
 [node name="FlagAreas" type="Node3D" parent="Map"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
@@ -187,9 +201,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 12, -34)
 [node name="FlagArea4" parent="Map/FlagAreas" instance=ExtResource("8_fef61")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10, 4, -44)
 
-[node name="FlagArea5" parent="Map/FlagAreas" instance=ExtResource("8_fef61")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8, 16, -50)
-
 [node name="CoinAreas" type="Node3D" parent="Map"]
 
 [node name="CoinArea1" parent="Map/CoinAreas" instance=ExtResource("5_c52tu")]
@@ -202,12 +213,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 9, -6)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 13, 4)
 
 [node name="CoinArea4" parent="Map/CoinAreas" instance=ExtResource("5_c52tu")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -50, 18, 8)
-
-[node name="CoinArea5" parent="Map/CoinAreas" instance=ExtResource("5_c52tu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 0)
-
-[node name="CoinArea6" parent="Map/CoinAreas" instance=ExtResource("5_c52tu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 11, 12)
 
 [node name="SpikeAreas" type="Node3D" parent="Map"]
@@ -254,6 +259,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46, 0, 3)
 [node name="SpikeArea14" parent="Map/SpikeAreas" instance=ExtResource("6_w414e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46, 0, 6)
 
+[node name="FallingAreas" type="Node3D" parent="Map"]
+
+[node name="FallingArea1" parent="Map/FallingAreas" instance=ExtResource("9_k7xhv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -35.5, 4.83533, 12.244)
+
+[node name="FallingArea2" parent="Map/FallingAreas" instance=ExtResource("9_k7xhv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -41.5, 13.8353, 7.24404)
+
+[node name="FallingArea3" parent="Map/FallingAreas" instance=ExtResource("9_k7xhv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25, 14, -5)
+
 [node name="Structures" type="GridMap" parent="Map"]
 mesh_library = ExtResource("3_yabu4")
 cell_center_x = false
@@ -264,16 +280,11 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="FallingAreas" type="Node3D" parent="Map"]
-
-[node name="FallingArea1" parent="Map/FallingAreas" instance=ExtResource("9_k7xhv")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -35.5, 4.83533, 12.244)
-
-[node name="FallingArea2" parent="Map/FallingAreas" instance=ExtResource("9_k7xhv")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -41.5, 13.8353, 7.24404)
-
 [node name="Knight" parent="." instance=ExtResource("2_dvi6t")]
 unique_name_in_owner = true
 
 [connection signal="pressed" from="PauseMenu/PaddingContainer/Panel/VerticalBoxContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
 [connection signal="pressed" from="PauseMenu/PaddingContainer/Panel/VerticalBoxContainer/QuitMenuBtn" to="." method="_on_quit_menu_btn_pressed"]
+[connection signal="body_entered" from="Map/Key" to="Map/Key" method="_on_body_entered"]
+[connection signal="body_entered" from="Map/Lever" to="Map/Lever" method="_on_body_entered"]
+[connection signal="body_exited" from="Map/Lever" to="Map/Lever" method="_on_body_exited"]

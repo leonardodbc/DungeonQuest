@@ -16,6 +16,10 @@ public partial class CoinCounter : Label
 	{
 		Coins += 1;
 	}
+	public void ChestOpened()
+	{
+		Coins += 10;
+	}
 	public void ResetCounter()
 	{
 		Coins = 0;
