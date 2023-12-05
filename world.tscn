@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c217s3ferwopb"]
+[gd_scene load_steps=31 format=3 uid="uid://c217s3ferwopb"]
 
 [ext_resource type="Texture2D" uid="uid://bamw83vs87xn2" path="res://Assets/coin.png" id="1_b2uym"]
 [ext_resource type="Script" path="res://Scripts/World.cs" id="1_tdtds"]
@@ -9,13 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://c6j2sb4r567fp" path="res://Props/ChestArea.tscn" id="5_lp41q"]
 [ext_resource type="PackedScene" uid="uid://c4joyj8qqvviw" path="res://Props/Key.tscn" id="5_yf80s"]
 [ext_resource type="PackedScene" uid="uid://b2pr80oyynmel" path="res://Props/Lever.tscn" id="6_fymuy"]
-[ext_resource type="PackedScene" uid="uid://cjbsgcal7dkci" path="res://Props/spikeArea.tscn" id="6_w414e"]
+[ext_resource type="PackedScene" uid="uid://cjbsgcal7dkci" path="res://Props/SpikeArea.tscn" id="6_w414e"]
 [ext_resource type="PackedScene" uid="uid://dk5ui03jlnpwq" path="res://Props/FlagArea.tscn" id="8_fef61"]
 [ext_resource type="PackedScene" uid="uid://d0iugfd7scqog" path="res://Props/FallingArea.tscn" id="9_k7xhv"]
 [ext_resource type="AudioStream" uid="uid://c77aika6jxpj0" path="res://good-night-160166.mp3" id="11_eb4c5"]
-[ext_resource type="PackedScene" uid="uid://cd5je4q2xliiu" path="res://Player/Testplayer.tscn" id="13_aeclx"]
+[ext_resource type="PackedScene" uid="uid://cd5je4q2xliiu" path="res://Player/Player.tscn" id="13_aeclx"]
 [ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="14_nnoru"]
-[ext_resource type="Script" path="res://Scripts/Player.cs" id="15_ej4al"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78irh"]
 bg_color = Color(0, 0, 0, 1)
@@ -151,14 +150,6 @@ text = "Voltar ao Menu"
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="CoinImage" type="TextureRect" parent="HUD"]
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 128.0
-offset_bottom = 128.0
-texture = ExtResource("1_b2uym")
-expand_mode = 1
-
 [node name="LabelCoin" type="Label" parent="HUD"]
 unique_name_in_owner = true
 offset_left = 136.0
@@ -169,6 +160,14 @@ label_settings = SubResource("LabelSettings_b68tl")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_clt8c")
+
+[node name="CoinImage" type="TextureRect" parent="HUD"]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 128.0
+texture = ExtResource("1_b2uym")
+expand_mode = 1
 
 [node name="Map" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
@@ -302,8 +301,6 @@ mix_target = 1
 
 [node name="Knight" parent="." instance=ExtResource("13_aeclx")]
 unique_name_in_owner = true
-script = ExtResource("15_ej4al")
-MouseSensitivity = 0.0016
 
 [node name="CameraControl" type="Node3D" parent="." groups=["CameraControl"]]
 script = ExtResource("14_nnoru")

@@ -30,7 +30,6 @@ public partial class Player : CharacterBody3D
 
 	}
 
-
 	private Vector3 LerpVector3(Vector3 valueToLerp, Vector3 valueToLerpTo, float weight) => new Vector3(
 	Mathf.Lerp(valueToLerp.X, valueToLerpTo.X, weight), Mathf.Lerp(valueToLerp.Y, valueToLerpTo.Y, weight), Mathf.Lerp(valueToLerp.Z, valueToLerpTo.Z, weight)
 );
@@ -44,8 +43,8 @@ public partial class Player : CharacterBody3D
 			GetNode<Label>("%LabelCoin").Call("ResetCounter");
 
 		}
-		Vector3 velocity = Velocity;
 
+		Vector3 velocity = Velocity;
 
 		CameraControl cameraControl = GetTree().GetNodesInGroup("CameraControl")[0] as CameraControl;
 		Vector3 lookAt = cameraControl.GetNode<Node3D>("LookAt").GlobalPosition;
@@ -101,7 +100,7 @@ public partial class Player : CharacterBody3D
 			int i = 0;
 			while (i < 2)
 			{
-				velocity += velocity.Lerp(dir * Speed * 4, +Acceleration * (float)delta);
+				velocity = velocity.Lerp(dir * Speed * 4, +Acceleration * (float)delta);
 				i++;
 			}
 		}
@@ -137,29 +136,14 @@ public partial class Player : CharacterBody3D
 		return velocity;
 	}
 
-	public override void _Input(InputEvent @event) // Câmera fiz
+	public override void _Input(InputEvent @event) 
 	{
 		if (Input.IsActionJustPressed("esc"))
 			Input.MouseMode = Input.MouseModeEnum.Visible;
 
-		if (!Input.IsMouseButtonPressed(MouseButton.Right))
-			return;
-
-		if (@event is InputEventMouseMotion mouseMotion)
+		if (@event is InputEventMouseMotion)
 		{
 			Input.MouseMode = Input.MouseModeEnum.Captured;
-
-			_rotationX += mouseMotion.Relative.X * MouseSensitivity;
-
-			Transform3D transform = Transform;
-			transform.Basis = Basis.Identity;
-			Transform = transform;
-
-			var rotation = Rotation;
-			rotation.Y -= mouseMotion.Relative.X * MouseSensitivity;
-			Rotation = rotation;
-
-			Rotate(Vector3.Up, _rotationX * -1);
 		}
 	}
 
