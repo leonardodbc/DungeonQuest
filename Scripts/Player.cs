@@ -19,6 +19,7 @@ public partial class Player : CharacterBody3D
 	private bool sprinting = false;
 	public Vector3 respawn;
 	private float _rotationX = 0f;
+	Vector3 lastLookAt = new Vector3();
 	public override void _Ready()
 	{
 
@@ -29,6 +30,10 @@ public partial class Player : CharacterBody3D
 
 	}
 
+
+	private Vector3 LerpVector3(Vector3 valueToLerp, Vector3 valueToLerpTo, float weight) => new Vector3(
+	Mathf.Lerp(valueToLerp.X, valueToLerpTo.X, weight), Mathf.Lerp(valueToLerp.Y, valueToLerpTo.Y, weight), Mathf.Lerp(valueToLerp.Z, valueToLerpTo.Z, weight)
+);
 	public override void _PhysicsProcess(double delta)
 	{
 
@@ -39,9 +44,30 @@ public partial class Player : CharacterBody3D
 			GetNode<Label>("%LabelCoin").Call("ResetCounter");
 
 		}
-
 		Vector3 velocity = Velocity;
-		velocity.Y += -gravity * (float)delta;
+
+
+		CameraControl cameraControl = GetTree().GetNodesInGroup("CameraControl")[0] as CameraControl;
+		Vector3 lookAt = cameraControl.GetNode<Node3D>("LookAt").GlobalPosition;
+		lookAt = new Vector3(lookAt.X, GlobalPosition.Y, lookAt.Z);
+
+		Vector2 inputDir = Input.GetVector("left", "right", "forward", "backward");
+		Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
+		if (direction != Vector3.Zero)
+		{
+			Vector3 lerpDirection = LerpVector3(lastLookAt, lookAt, 0.075f);
+			LookAt(lerpDirection);
+			lastLookAt = lerpDirection;
+
+		}
+		else
+		{
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
+		}
+
+
+		velocity.Y -= gravity * (float)delta;
 		velocity = GetMoveInput(delta);
 		velocity = HandleJump(velocity, delta);
 		Velocity = velocity;

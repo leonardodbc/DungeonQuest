@@ -1,9 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://c217s3ferwopb"]
+[gd_scene load_steps=32 format=3 uid="uid://c217s3ferwopb"]
 
 [ext_resource type="Texture2D" uid="uid://bamw83vs87xn2" path="res://Assets/coin.png" id="1_b2uym"]
 [ext_resource type="Script" path="res://Scripts/World.cs" id="1_tdtds"]
 [ext_resource type="Script" path="res://Scripts/CoinCounter.cs" id="2_clt8c"]
-[ext_resource type="PackedScene" uid="uid://dbb6fffo5lneu" path="res://Player/knight.tscn" id="2_dvi6t"]
 [ext_resource type="FontFile" uid="uid://3igy3w4l7dme" path="res://Assets/Sora-Regular.ttf" id="2_etdoi"]
 [ext_resource type="MeshLibrary" uid="uid://dcqqifdqllubi" path="res://Gridmaps/Gridmap_World.tres" id="3_yabu4"]
 [ext_resource type="PackedScene" uid="uid://dq3xmhirja5b4" path="res://Props/CoinArea.tscn" id="5_c52tu"]
@@ -14,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://dk5ui03jlnpwq" path="res://Props/FlagArea.tscn" id="8_fef61"]
 [ext_resource type="PackedScene" uid="uid://d0iugfd7scqog" path="res://Props/FallingArea.tscn" id="9_k7xhv"]
 [ext_resource type="AudioStream" uid="uid://c77aika6jxpj0" path="res://good-night-160166.mp3" id="11_eb4c5"]
+[ext_resource type="PackedScene" uid="uid://cd5je4q2xliiu" path="res://Player/Testplayer.tscn" id="13_aeclx"]
+[ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="14_nnoru"]
+[ext_resource type="Script" path="res://Scripts/Player.cs" id="15_ej4al"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78irh"]
 bg_color = Color(0, 0, 0, 1)
@@ -292,15 +294,29 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -41.5,
 [node name="FallingArea3" parent="Map/FallingAreas" instance=ExtResource("9_k7xhv")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25, 14, -5)
 
-[node name="Knight" parent="." instance=ExtResource("2_dvi6t")]
-unique_name_in_owner = true
-MouseSensitivity = 0.005
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_eb4c5")
 volume_db = -15.928
 autoplay = true
 mix_target = 1
+
+[node name="Knight" parent="." instance=ExtResource("13_aeclx")]
+unique_name_in_owner = true
+script = ExtResource("15_ej4al")
+MouseSensitivity = 0.0016
+
+[node name="CameraControl" type="Node3D" parent="." groups=["CameraControl"]]
+script = ExtResource("14_nnoru")
+
+[node name="Pivot" type="SpringArm3D" parent="CameraControl"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+spring_length = 6.0
+
+[node name="Camera" type="Camera3D" parent="CameraControl/Pivot"]
+unique_name_in_owner = true
+
+[node name="LookAt" type="Node3D" parent="CameraControl"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -37)
 
 [connection signal="pressed" from="PauseMenu/PaddingContainer/Panel/VerticalBoxContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
 [connection signal="pressed" from="PauseMenu/PaddingContainer/Panel/VerticalBoxContainer/QuitMenuBtn" to="." method="_on_quit_menu_btn_pressed"]
