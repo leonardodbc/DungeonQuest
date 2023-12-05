@@ -11,10 +11,9 @@ public partial class SpikeArea : Area3D
 	}
 	private void _on_body_entered(Node3D body)
 	{
-		if (body is Player) {
-			body.GlobalPosition = ((Player)temp).respawn;
-			GetNode<Label>("%LabelCoin").Call("ResetCounter");
-			GetNode<Node3D>("%Knight").Call("decreasePlayerHealth");
+		if (body is Player)
+		{
+			temp.Call("death");
 		}
 	}
 

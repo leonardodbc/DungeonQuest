@@ -38,9 +38,7 @@ public partial class Player : CharacterBody3D
 
 		if (GlobalPosition.Y < -10)
 		{
-
-			GlobalPosition = respawn;
-			GetNode<Label>("%LabelCoin").Call("ResetCounter");
+			death();
 
 		}
 
@@ -136,7 +134,7 @@ public partial class Player : CharacterBody3D
 		return velocity;
 	}
 
-	public override void _Input(InputEvent @event) 
+	public override void _Input(InputEvent @event)
 	{
 		if (Input.IsActionJustPressed("esc"))
 			Input.MouseMode = Input.MouseModeEnum.Visible;
@@ -177,5 +175,13 @@ public partial class Player : CharacterBody3D
 			stateMachine.Travel("Jump_Idle");
 			animations.Set("parameters/conditions/grounded", false);
 		}
+	}
+
+	public void death()
+	{
+		GlobalPosition = respawn;
+		var label = GetNode<Label>("/root/World/HUD/LabelCoin");
+		label.Call("ResetCounter");
+
 	}
 }
