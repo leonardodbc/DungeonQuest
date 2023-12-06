@@ -19,6 +19,8 @@ public partial class Player : CharacterBody3D
 	private bool sprinting = false;
 	public Vector3 respawn;
 	private float _rotationX = 0f;
+
+	public int life = 3;
 	Vector3 lastLookAt = new Vector3();
 	public override void _Ready()
 	{
@@ -182,6 +184,10 @@ public partial class Player : CharacterBody3D
 		GlobalPosition = respawn;
 		var label = GetNode<Label>("/root/World/HUD/LabelCoin");
 		label.Call("ResetCounter");
-
+		if (life > 1) life--;
+		else
+		{
+			GetTree().ChangeSceneToFile("res://Menu.tscn");
+		}
 	}
 }
