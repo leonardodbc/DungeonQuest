@@ -1,0 +1,108 @@
+[gd_scene load_steps=13 format=3 uid="uid://dpr70glhxicb"]
+
+[ext_resource type="FontFile" uid="uid://3igy3w4l7dme" path="res://Assets/Sora-Regular.ttf" id="1_4sfv5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78irh"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwuji"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iq7n7"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x00sk"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g1sih"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oob6n"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hncg6"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6u3hy"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbg08"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ewmq"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2xcuc"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 2
+
+[node name="PaddingContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 500
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_right = 500
+theme_override_constants/margin_bottom = 250
+
+[node name="Panel" type="Panel" parent="PaddingContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_78irh")
+
+[node name="VerticalBoxContainer" type="VBoxContainer" parent="PaddingContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResumeBtn" type="Button" parent="PaddingContainer/Panel/VerticalBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 0.0745098, 0.0745098, 1)
+theme_override_colors/font_hover_color = Color(1, 0.192157, 0.192157, 1)
+theme_override_fonts/font = ExtResource("1_4sfv5")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_hwuji")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iq7n7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x00sk")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_g1sih")
+theme_override_styles/focus = SubResource("StyleBoxFlat_oob6n")
+text = "Fechar"
+
+[node name="MarginContainer" type="MarginContainer" parent="PaddingContainer/Panel/VerticalBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="QuitMenuBtn" type="Button" parent="PaddingContainer/Panel/VerticalBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 0.0745098, 0.0745098, 1)
+theme_override_colors/font_hover_color = Color(1, 0.192157, 0.192157, 1)
+theme_override_fonts/font = ExtResource("1_4sfv5")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_hncg6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6u3hy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dbg08")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5ewmq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_2xcuc")
+text = "Voltar ao Menu"

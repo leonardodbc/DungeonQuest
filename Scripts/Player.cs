@@ -8,22 +8,30 @@ public partial class Player : CharacterBody3D
 	public const float JumpVelocity = 9.5f;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
-	public float gravity = 2f * ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
+	public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 
 	[Export] public float MouseSensitivity = 0.0016f;
 	private AnimationTree animations;
 	private AnimationNodeStateMachinePlayback stateMachine;
 	private bool canJump = false;
 	private bool jumping = true;
+	private bool alreadydeath = false;
 	private bool lastFloor = true;
+	private bool dontmove = false;
 	private bool sprinting = false;
 	public Vector3 respawn;
 	private float _rotationX = 0f;
-
+	CanvasLayer deathMenu;
 	public int life = 3;
 	Vector3 lastLookAt = new Vector3();
+	Timer timer;
 	public override void _Ready()
-	{
+	{	
+		timer = GetNode<Timer>("Timer");
+		timer.Timeout += deathmenushow;
+		
+		deathMenu = GetNode<CanvasLayer>("%DeathMenu");
+		deathMenu.Hide();
 
 		respawn = new Vector3(0, 0, 0);
 
@@ -50,27 +58,31 @@ public partial class Player : CharacterBody3D
 		Vector3 lookAt = cameraControl.GetNode<Node3D>("LookAt").GlobalPosition;
 		lookAt = new Vector3(lookAt.X, GlobalPosition.Y, lookAt.Z);
 
-		Vector2 inputDir = Input.GetVector("left", "right", "forward", "backward");
-		Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
-		if (direction != Vector3.Zero)
+		if (!dontmove)
 		{
-			Vector3 lerpDirection = LerpVector3(lastLookAt, lookAt, 0.075f);
-			LookAt(lerpDirection);
-			lastLookAt = lerpDirection;
+			Vector2 inputDir = Input.GetVector("left", "right", "forward", "backward");
+			Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
+			if (direction != Vector3.Zero)
+			{
+				Vector3 lerpDirection = LerpVector3(lastLookAt, lookAt, 0.075f);
+				LookAt(lerpDirection);
+				lastLookAt = lerpDirection;
 
+			}
+			else
+			{
+				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+				velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
+			}
+
+
+			velocity.Y -= gravity * (float)delta;
+			velocity = GetMoveInput(delta);
+			velocity = HandleJump(velocity, delta);
+			Velocity = velocity;
+			MoveAndSlide();
 		}
-		else
-		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
-		}
-
-
-		velocity.Y -= gravity * (float)delta;
-		velocity = GetMoveInput(delta);
-		velocity = HandleJump(velocity, delta);
-		Velocity = velocity;
-		MoveAndSlide();
+		
 	}
 
 	private Vector3 GetMoveInput(double delta)
@@ -181,13 +193,36 @@ public partial class Player : CharacterBody3D
 
 	public void death()
 	{
-		GlobalPosition = respawn;
-		var label = GetNode<Label>("/root/World/HUD/LabelCoin");
-		label.Call("ResetCounter");
-		if (life > 1) life--;
+		if (alreadydeath) return;
+		if (life > 1)
+		{
+			life--;
+			GlobalPosition = respawn;
+		}
 		else
 		{
-			GetTree().ChangeSceneToFile("res://Menu.tscn");
+			alreadydeath = true;
+			life--;
+			dontmove = true;
+			stateMachine.Travel("Death_A");
+			timer.Start();
 		}
+	}
+
+	private void deathmenushow()
+ 	{
+		GetTree().Paused = true;
+		Input.MouseMode = Input.MouseModeEnum.Visible;
+		deathMenu.Show();
+ 	}
+	public void _on_restart_btn_pressed()
+	{
+		GetTree().Paused = false;
+		GetTree().ReloadCurrentScene();
+	}
+	public void _on_quit_menu_btn_pressed()
+	{
+		GetTree().Paused = false;
+		GetTree().ChangeSceneToFile("res://Menu.tscn");
 	}
 }

@@ -24,7 +24,7 @@ public partial class Lever : Area3D
 		if (Input.IsActionJustPressed("action") && dentro && !usou)
 		{
 			animationlever.Play("LeverSwitch");
-			GetNode<Node3D>("/root/World").Call("addkey");
+			GetNode<Node3D>("/root/Map1").Call("addkey");
 			usou = true;
 			activelevertext.Text = "";
 		}

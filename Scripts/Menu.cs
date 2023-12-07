@@ -18,7 +18,7 @@ public partial class Menu : CanvasLayer
 	}
 	public void _on_play_btn_pressed() // Play Button
 	{
-		GetTree().ChangeSceneToFile("res://world.tscn");
+		GetTree().ChangeSceneToFile("res://Maps/Map1.tscn");
 	}
 	public void _on_about_btn_pressed() // About Button
 	{

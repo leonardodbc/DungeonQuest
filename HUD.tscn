@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://qwfjp43n301q"]
+
+[ext_resource type="Script" path="res://Scripts/CoinCounter.cs" id="1_t3v33"]
+[ext_resource type="Texture2D" uid="uid://bamw83vs87xn2" path="res://Assets/coin.png" id="2_xjcl3"]
+[ext_resource type="Script" path="res://Scripts/lifeLabel.cs" id="3_hurid"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b68tl"]
+font_size = 32
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="LabelCoin" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 136.0
+offset_top = 72.0
+offset_right = 184.0
+offset_bottom = 120.0
+label_settings = SubResource("LabelSettings_b68tl")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_t3v33")
+
+[node name="CoinImage" type="TextureRect" parent="."]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 128.0
+texture = ExtResource("2_xjcl3")
+expand_mode = 1
+
+[node name="lifeLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 51.0
+offset_top = 136.0
+offset_right = 215.0
+offset_bottom = 181.0
+label_settings = SubResource("LabelSettings_b68tl")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_hurid")
