@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dk5ui03jlnpwq"]
+[gd_scene load_steps=10 format=3 uid="uid://dk5ui03jlnpwq"]
 
 [ext_resource type="Script" path="res://Scripts/FlagArea.cs" id="1_tnoxx"]
 
@@ -9,14 +9,34 @@ bottom_radius = 0.03
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rmo87"]
 albedo_color = Color(0.52549, 0.262745, 0.74902, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_d5f6m"]
-size = Vector3(0.05, 0.5, 0.5)
+[sub_resource type="CylinderMesh" id="CylinderMesh_xhg5h"]
+top_radius = 0.1
+height = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b5hrm"]
 albedo_color = Color(0.52549, 0.262745, 0.74902, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5di75"]
 size = Vector3(2, 2, 2)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7f884"]
+sky_top_color = Color(0.223529, 0.678431, 0.862745, 1)
+sky_horizon_color = Color(0.560784, 0.784314, 0.882353, 1)
+sky_energy_multiplier = 1.2
+ground_bottom_color = Color(0.2, 0.168627, 0.133333, 1)
+ground_horizon_color = Color(0.605882, 0.711765, 0.74902, 1)
+
+[sub_resource type="Sky" id="Sky_fpsfi"]
+sky_material = SubResource("ProceduralSkyMaterial_7f884")
+
+[sub_resource type="Environment" id="Environment_wj75q"]
+background_mode = 2
+sky = SubResource("Sky_fpsfi")
+tonemap_mode = 2
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.26
+volumetric_fog_albedo = Color(0.129412, 0.129412, 0.129412, 1)
+volumetric_fog_emission_energy = 259.69
 
 [node name="FlagArea" type="Area3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -42,13 +62,28 @@ mesh = SubResource("CylinderMesh_8lqkm")
 surface_material_override/0 = SubResource("StandardMaterial3D_rmo87")
 
 [node name="Flag" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72263, -0.252541)
-mesh = SubResource("BoxMesh_d5f6m")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("CylinderMesh_xhg5h")
 surface_material_override/0 = SubResource("StandardMaterial3D_b5hrm")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_5di75")
+
+[node name="FlashLight" type="SpotLight3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 2, 0)
+light_color = Color(0.984314, 0.713726, 0.254902, 1)
+light_energy = 2.0
+light_indirect_energy = 2.0
+light_volumetric_fog_energy = 75.0
+light_size = 20.0
+light_specular = 16.0
+light_bake_mode = 0
+spot_range = 6.0
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wj75q")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
