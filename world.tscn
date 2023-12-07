@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream:world.tscn
 [gd_scene load_steps=29 format=3 uid="uid://c217s3ferwopb"]
 
 [ext_resource type="Texture2D" uid="uid://bamw83vs87xn2" path="res://Assets/coin.png" id="1_b2uym"]
@@ -13,6 +14,28 @@
 [ext_resource type="PackedScene" uid="uid://cjbsgcal7dkci" path="res://Props/SpikeArea.tscn" id="6_w414e"]
 [ext_resource type="PackedScene" uid="uid://dk5ui03jlnpwq" path="res://Props/FlagArea.tscn" id="8_fef61"]
 [ext_resource type="PackedScene" uid="uid://d0iugfd7scqog" path="res://Props/FallingArea.tscn" id="9_k7xhv"]
+=======
+[gd_scene load_steps=37 format=3 uid="uid://c217s3ferwopb"]
+
+[ext_resource type="Script" path="res://Scripts/Map1.cs" id="1_6nboc"]
+[ext_resource type="FontFile" uid="uid://3igy3w4l7dme" path="res://Assets/Sora-Regular.ttf" id="2_6tsqc"]
+[ext_resource type="Script" path="res://Scripts/LabelCoin.cs" id="3_fpf55"]
+[ext_resource type="Texture2D" uid="uid://bamw83vs87xn2" path="res://Assets/coin.png" id="4_ydxyw"]
+[ext_resource type="Script" path="res://Scripts/lifeLabel.cs" id="5_yu2tc"]
+[ext_resource type="PackedScene" uid="uid://c6j2sb4r567fp" path="res://Props/ChestArea.tscn" id="6_wfyff"]
+[ext_resource type="PackedScene" uid="uid://c4joyj8qqvviw" path="res://Props/Key.tscn" id="7_8rflt"]
+[ext_resource type="Script" path="res://Scripts/ChestAreaMap1.cs" id="7_82qic"]
+[ext_resource type="PackedScene" uid="uid://b2pr80oyynmel" path="res://Props/Lever.tscn" id="8_yo7id"]
+[ext_resource type="PackedScene" uid="uid://dk5ui03jlnpwq" path="res://Props/FlagArea.tscn" id="9_ale7n"]
+[ext_resource type="PackedScene" uid="uid://dq3xmhirja5b4" path="res://Props/CoinArea.tscn" id="10_2oaip"]
+[ext_resource type="PackedScene" uid="uid://cjbsgcal7dkci" path="res://Props/SpikeArea.tscn" id="11_arqeq"]
+[ext_resource type="PackedScene" uid="uid://d0iugfd7scqog" path="res://Props/FallingArea.tscn" id="12_rp2pt"]
+[ext_resource type="AudioStream" uid="uid://c77aika6jxpj0" path="res://good-night-160166.mp3" id="13_i7cuh"]
+[ext_resource type="PackedScene" uid="uid://cd5je4q2xliiu" path="res://Player/Player.tscn" id="14_gjob3"]
+[ext_resource type="Script" path="res://Scripts/CameraControl.cs" id="15_sxmex"]
+[ext_resource type="Script" path="res://Scripts/Ball.cs" id="16_50cc7"]
+[ext_resource type="MeshLibrary" uid="uid://dcqqifdqllubi" path="res://Gridmaps/Gridmap_World.tres" id="17_mnxgd"]
+>>>>>>> Stashed changes:Maps/Map1.tscn
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78irh"]
 bg_color = Color(0, 0, 0, 1)
@@ -77,11 +100,24 @@ sky = SubResource("Sky_hky81")
 tonemap_mode = 2
 glow_enabled = true
 
+<<<<<<< Updated upstream:world.tscn
 [node name="World" type="Node3D"]
 script = ExtResource("1_tdtds")
+=======
+[sub_resource type="NavigationMesh" id="NavigationMesh_uwj7g"]
+vertices = PackedVector3Array(-20, 4.4, -20, -19.5, 4.4, -20, -19.75, 4.4, -28, -20, 4.4, -28, -19.75, 4.4, -44, -19.5, 4.4, -52, -20, 4.4, -52, -20, 4.4, -44, -20, 4.4, -36, -20, 4.4, -28, -19.75, 4.4, -28, -19.75, 4.4, -36, -19.75, 4.4, -36, -19.75, 4.4, -44, -20, 4.4, -44, -20, 4.4, -36, -10, 16.4, -52, -10, 16.4, -48, -5.75, 16.4, -48, -5.75, 16.4, -52, -12.5, 0.4, -47, -10, 0.4, -47, -10, 0.4, -51, -13, 0.4, -46.5, -12.5, 0.4, -47, -10, 0.4, -51, -19, 0.4, -51, -19, 0.4, -44, -19, 0.4, -44, -13, 0.4, -44, -13, 0.4, -46.5, -7, 0.4, -41.5, -7.75, 0.4, -41, -6.25, 0.4, -37, -1.5, 0.4, -37, 3.5, 0.4, -47, 6, 0.4, -47, 6, 0.4, -51, -10, 0.4, -51, -10, 0.4, -47, -7.5, 0.4, -47, 3, 0.4, -46.5, 3.5, 0.4, -47, 6, 0.4, -51, -2, 0.4, -51, -10, 0.4, -51, -7.5, 0.4, -47, -7, 0.4, -46.5, -2, 0.4, -51, -7, 0.4, -46.5, -7, 0.4, -41.5, -1.5, 0.4, -37, 3, 0.4, -41.5, 3, 0.4, -46.5, -2, 0.4, -51, 6, 0.4, -51, 6, 0.4, -47, 8.5, 0.4, -47, 6, 0.4, -51, 8.5, 0.4, -47, 9, 0.4, -46.5, 12.5, 0.4, -51, 12.5, 0.4, -51, 9, 0.4, -46.5, 9, 0.4, -43.5, 19, 0.4, -43.5, 19, 0.4, -51, -12, 4.4, -46, -12, 4.4, -42, -7.75, 4.4, -42, -7.75, 4.4, -46, 4, 8.4, -46, 4, 8.4, -42, 8.25, 8.4, -42, 8.25, 8.4, -46, -11, 0.4, -45, -11, 0.4, -43, -9, 0.4, -43, -9, 0.4, -45, 5, 0.4, -45, 5, 0.4, -43, 7, 0.4, -43, 7, 0.4, -45, -9, 0.4, -30.25, -6.5, 0.4, -31, -7, 0.4, -31.5, -9.5, 0.4, -31, -9, 0.4, -30.25, -7, 0.4, -31.5, -7, 0.4, -36.5, -7, 0.4, -36.5, -6.25, 0.4, -37, -7.75, 0.4, -41, -12.5, 0.4, -41, -19, 0.4, -28, -15, 0.4, -28, -15, 0.4, -30.5, -19, 0.4, -28, -15, 0.4, -30.5, -14.5, 0.4, -31, -19, 0.4, -36, -12.5, 0.4, -41, -13, 0.4, -41.5, -19, 0.4, -44, -13, 0.4, -41.5, -13, 0.4, -44, -19, 0.4, -44, -12.5, 0.4, -41, -19, 0.4, -44, -19, 0.4, -36, -14.5, 0.4, -31, -9.5, 0.4, -31, -7, 0.4, -36.5, 13, 0.4, -34.5, 13, 0.4, -32, 19, 0.4, -32, 9, 0.4, -41.5, 8, 0.4, -41, 8, 0.4, -35, 12.5, 0.4, -35, 12.5, 0.4, -35, 13, 0.4, -34.5, 19, 0.4, -32, 19, 0.4, -43.5, 9, 0.4, -43.5, 9, 0.4, -41.5, 3.5, 0.4, -41, 3, 0.4, -41.5, -1.5, 0.4, -37, -1, 0.4, -36.5, -1, 0.4, -33, 7, 0.4, -33, 7, 0.4, -34.5, 3.5, 0.4, -41, -1, 0.4, -36.5, 7, 0.4, -34.5, 8, 0.4, -35, 8, 0.4, -41, 3.5, 0.4, -41, -6, 12.4, -36, -6, 12.4, -32, -1.75, 12.4, -32, -1.75, 12.4, -36, -5, 0.4, -35, -5, 0.4, -33, -3, 0.4, -33, -3, 0.4, -35, 8, 4.4, -34, 8, 4.4, -30, 12.25, 4.4, -30, 12.25, 4.4, -34, -9.5, 0.4, -25, -12, 0.4, -25, -12, 0.4, -21, -9, 0.4, -25.5, -9.5, 0.4, -25, -12, 0.4, -21, -3.5, 0.4, -21, -6.5, 0.4, -31, -9, 0.4, -30.25, -9, 0.4, -25.5, -3, 0.4, -20.5, -3, 0.4, -18.5, 3, 0.4, -18.5, 3, 0.4, -20.5, -1.5, 0.4, -31, -6.5, 0.4, -31, -9, 0.4, -25.5, -3.5, 0.4, -21, 3.5, 0.4, -21, 7, 0.4, -29.5, -3.5, 0.4, -21, -3, 0.4, -20.5, 3, 0.4, -20.5, 3.5, 0.4, -21, 3.5, 0.4, -21, 10, 0.4, -21, 7.5, 0.4, -29, 7, 0.4, -29.5, 10, 0.4, -21, 10, 0.4, -29, 7.5, 0.4, -29, 7, 0.4, -33, -1, 0.4, -33, -1, 0.4, -31.5, 7, 0.4, -29.5, 7, 0.4, -33, -1, 0.4, -31.5, -1.5, 0.4, -31, 9, 0.4, -33, 9, 0.4, -31, 11, 0.4, -31, 11, 0.4, -33, 19, 0.4, -32, 13, 0.4, -32, 13, 0.4, -29.5, 19, 0.4, -32, 13, 0.4, -29.5, 12.5, 0.4, -29, 10, 0.4, -21, 19, 0.4, -21, 12.5, 0.4, -29, 10, 0.4, -29, 10, 0.4, -21, -14, 8.4, -30, -14, 8.4, -26, -9.75, 8.4, -26, -9.75, 8.4, -30, -13, 0.4, -29, -13, 0.4, -27, -11, 0.4, -27, -11, 0.4, -29, -12, 0.4, -21, -12, 0.4, -25, -14.5, 0.4, -25, -15, 0.4, -25.5, -15, 0.4, -28, -19, 0.4, -28, -12, 0.4, -21, -14.5, 0.4, -25, -15, 0.4, -25.5, -19, 0.4, -28, -19, 0.4, -21, -4.25, 4.4, -20, -4.25, 4.4, -8, -3.75, 4.4, -8, -3.75, 4.4, -20, 8, 4.4, -7.5, 8, 4.4, -8, 4.25, 4.4, -8.25, 4, 4.4, -8, 4, 4.4, -20, 4, 4.4, -8, 4.25, 4.4, -8.25, 4.5, 4.4, -20, -3, 0.4, -9.5, 3, 0.4, -9.5, 3, 0.4, -18.5, -3, 0.4, -18.5, 3, 0.4, -7.5, 3, 0.4, -9.5, -3, 0.4, -9.5, -3, 0.4, -7.5, -7, 0.4, 0, -7, 0.4, 7, 0, 0.4, 7, 7, 0.4, 0, 3.5, 0.4, -7, -3.5, 0.4, -7, 3.5, 0.4, -7, 3, 0.4, -7.5, -3, 0.4, -7.5, -3.5, 0.4, -7, 0, 0.4, 7, 7, 0.4, 7, 7, 0.4, 0, -3.5, 0.4, -7, -7, 0.4, -7, -7, 0.4, 0, 7, 0.4, 0, 7, 0.4, -7, 3.5, 0.4, -7, -8, 4.4, -8, -8, 4.4, -4.25, -7.5, 4.4, -7.75)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(22, 21, 20), PackedInt32Array(24, 23, 25), PackedInt32Array(25, 23, 26), PackedInt32Array(26, 23, 27), PackedInt32Array(30, 29, 28), PackedInt32Array(32, 31, 33), PackedInt32Array(33, 31, 34), PackedInt32Array(37, 36, 35), PackedInt32Array(40, 39, 38), PackedInt32Array(42, 41, 43), PackedInt32Array(43, 41, 44), PackedInt32Array(46, 45, 47), PackedInt32Array(47, 45, 48), PackedInt32Array(52, 51, 53), PackedInt32Array(53, 51, 50), PackedInt32Array(53, 50, 49), PackedInt32Array(53, 49, 54), PackedInt32Array(57, 56, 55), PackedInt32Array(59, 58, 60), PackedInt32Array(60, 58, 61), PackedInt32Array(63, 62, 64), PackedInt32Array(64, 62, 66), PackedInt32Array(64, 66, 65), PackedInt32Array(70, 69, 67), PackedInt32Array(67, 69, 68), PackedInt32Array(74, 73, 71), PackedInt32Array(71, 73, 72), PackedInt32Array(78, 77, 75), PackedInt32Array(75, 77, 76), PackedInt32Array(82, 81, 79), PackedInt32Array(79, 81, 80), PackedInt32Array(83, 85, 84), PackedInt32Array(87, 86, 88), PackedInt32Array(88, 86, 89), PackedInt32Array(91, 90, 92), PackedInt32Array(92, 90, 93), PackedInt32Array(96, 95, 94), PackedInt32Array(98, 97, 99), PackedInt32Array(99, 97, 100), PackedInt32Array(103, 102, 101), PackedInt32Array(106, 105, 104), PackedInt32Array(111, 110, 112), PackedInt32Array(112, 110, 107), PackedInt32Array(107, 110, 109), PackedInt32Array(107, 109, 108), PackedInt32Array(115, 114, 113), PackedInt32Array(117, 116, 118), PackedInt32Array(118, 116, 119), PackedInt32Array(121, 120, 122), PackedInt32Array(122, 120, 125), PackedInt32Array(122, 125, 124), PackedInt32Array(122, 124, 123), PackedInt32Array(129, 128, 126), PackedInt32Array(126, 128, 127), PackedInt32Array(132, 131, 133), PackedInt32Array(133, 131, 134), PackedInt32Array(134, 131, 130), PackedInt32Array(136, 135, 137), PackedInt32Array(137, 135, 138), PackedInt32Array(142, 141, 139), PackedInt32Array(139, 141, 140), PackedInt32Array(146, 145, 143), PackedInt32Array(143, 145, 144), PackedInt32Array(150, 149, 147), PackedInt32Array(147, 149, 148), PackedInt32Array(153, 152, 151), PackedInt32Array(155, 154, 156), PackedInt32Array(156, 154, 157), PackedInt32Array(160, 159, 158), PackedInt32Array(164, 163, 161), PackedInt32Array(161, 163, 162), PackedInt32Array(166, 165, 167), PackedInt32Array(167, 165, 168), PackedInt32Array(168, 165, 169), PackedInt32Array(169, 165, 170), PackedInt32Array(172, 171, 173), PackedInt32Array(173, 171, 174), PackedInt32Array(177, 176, 178), PackedInt32Array(178, 176, 175), PackedInt32Array(181, 180, 179), PackedInt32Array(184, 183, 182), PackedInt32Array(187, 186, 188), PackedInt32Array(188, 186, 185), PackedInt32Array(192, 191, 189), PackedInt32Array(189, 191, 190), PackedInt32Array(195, 194, 193), PackedInt32Array(197, 196, 198), PackedInt32Array(198, 196, 200), PackedInt32Array(198, 200, 199), PackedInt32Array(203, 202, 201), PackedInt32Array(207, 206, 204), PackedInt32Array(204, 206, 205), PackedInt32Array(211, 210, 208), PackedInt32Array(208, 210, 209), PackedInt32Array(214, 213, 212), PackedInt32Array(217, 216, 215), PackedInt32Array(219, 218, 220), PackedInt32Array(220, 218, 222), PackedInt32Array(220, 222, 221), PackedInt32Array(226, 225, 223), PackedInt32Array(223, 225, 224), PackedInt32Array(228, 227, 229), PackedInt32Array(229, 227, 230), PackedInt32Array(234, 233, 231), PackedInt32Array(231, 233, 232), PackedInt32Array(238, 237, 235), PackedInt32Array(235, 237, 236), PackedInt32Array(242, 241, 239), PackedInt32Array(239, 241, 240), PackedInt32Array(244, 243, 245), PackedInt32Array(245, 243, 248), PackedInt32Array(245, 248, 247), PackedInt32Array(245, 247, 246), PackedInt32Array(250, 249, 251), PackedInt32Array(251, 249, 252), PackedInt32Array(255, 254, 253), PackedInt32Array(258, 257, 256), PackedInt32Array(261, 260, 259), PackedInt32Array(264, 263, 262)]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ai4xh"]
+radius = 0.55
+
+[sub_resource type="SphereMesh" id="SphereMesh_5voqd"]
+
+[node name="Map1" type="Node3D"]
+script = ExtResource("1_6nboc")
+>>>>>>> Stashed changes:Maps/Map1.tscn
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
-unique_name_in_owner = true
 process_mode = 2
 
 [node name="PaddingContainer" type="MarginContainer" parent="PauseMenu"]
@@ -175,9 +211,16 @@ environment = SubResource("Environment_oqn3m")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 35, 0)
 shadow_enabled = true
 
+<<<<<<< Updated upstream:world.tscn
 [node name="ChestArea" parent="Map" instance=ExtResource("5_lp41q")]
 unique_name_in_owner = true
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 6, 0, -2.62268e-07)
+=======
+[node name="ChestAreaMap1" parent="Map" instance=ExtResource("6_wfyff")]
+unique_name_in_owner = true
+transform = Transform3D(-0.109734, 0, -0.993961, 0, 1, 0, 0.993961, 0, -0.109734, 6.45479, 0, -2.82148e-07)
+script = ExtResource("7_82qic")
+>>>>>>> Stashed changes:Maps/Map1.tscn
 
 [node name="Key" parent="Map" instance=ExtResource("5_yf80s")]
 unique_name_in_owner = true
@@ -270,8 +313,39 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -41.5,
 [node name="FallingArea3" parent="Map/FallingAreas" instance=ExtResource("9_k7xhv")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25, 14, -5)
 
+<<<<<<< Updated upstream:world.tscn
 [node name="Structures" type="GridMap" parent="Map"]
 mesh_library = ExtResource("3_yabu4")
+=======
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_i7cuh")
+volume_db = -15.928
+autoplay = true
+mix_target = 1
+
+[node name="CameraControl" type="Node3D" parent="." groups=["CameraControl"]]
+script = ExtResource("15_sxmex")
+
+[node name="Pivot" type="SpringArm3D" parent="CameraControl"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+spring_length = 6.0
+
+[node name="Camera" type="Camera3D" parent="CameraControl/Pivot"]
+unique_name_in_owner = true
+
+[node name="LookAt" type="Node3D" parent="CameraControl"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -37)
+
+[node name="Knight" parent="." instance=ExtResource("14_gjob3")]
+unique_name_in_owner = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_uwj7g")
+
+[node name="Structures" type="GridMap" parent="NavigationRegion3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+mesh_library = ExtResource("17_mnxgd")
+>>>>>>> Stashed changes:Maps/Map1.tscn
 cell_center_x = false
 cell_center_y = false
 cell_center_z = false
@@ -280,11 +354,66 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
+<<<<<<< Updated upstream:world.tscn
 [node name="Knight" parent="." instance=ExtResource("2_dvi6t")]
 unique_name_in_owner = true
+=======
+[node name="Ball" type="RigidBody3D" parent="NavigationRegion3D" node_paths=PackedStringArray("PlayerTarget", "NavigationAgent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.733299, 3, -44.4088)
+mass = 2.0
+angular_damp = 0.3
+script = ExtResource("16_50cc7")
+MaximumVelocity = 30.0
+VelocityChange = 30.0
+PlayerTarget = NodePath("../../Knight")
+NavigationAgent = NodePath("NavigationAgent3D")
+
+[node name="Collision" type="CollisionShape3D" parent="NavigationRegion3D/Ball"]
+shape = SubResource("SphereShape3D_ai4xh")
+
+[node name="Ball" type="MeshInstance3D" parent="NavigationRegion3D/Ball"]
+mesh = SubResource("SphereMesh_5voqd")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NavigationRegion3D/Ball"]
+avoidance_enabled = true
+
+[node name="Area3D" type="Area3D" parent="NavigationRegion3D/Ball"]
+
+[node name="Collision" type="CollisionShape3D" parent="NavigationRegion3D/Ball/Area3D"]
+shape = SubResource("SphereShape3D_ai4xh")
+
+[node name="Ball2" type="RigidBody3D" parent="NavigationRegion3D" node_paths=PackedStringArray("PlayerTarget", "NavigationAgent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2667, 3, -23.4088)
+mass = 2.0
+angular_damp = 0.3
+script = ExtResource("16_50cc7")
+MaximumVelocity = 30.0
+VelocityChange = 30.0
+PlayerTarget = NodePath("../../Knight")
+NavigationAgent = NodePath("NavigationAgent3D")
+
+[node name="Collision" type="CollisionShape3D" parent="NavigationRegion3D/Ball2"]
+shape = SubResource("SphereShape3D_ai4xh")
+
+[node name="Ball" type="MeshInstance3D" parent="NavigationRegion3D/Ball2"]
+mesh = SubResource("SphereMesh_5voqd")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NavigationRegion3D/Ball2"]
+avoidance_enabled = true
+
+[node name="Area3D" type="Area3D" parent="NavigationRegion3D/Ball2"]
+
+[node name="Collision" type="CollisionShape3D" parent="NavigationRegion3D/Ball2/Area3D"]
+shape = SubResource("SphereShape3D_ai4xh")
+>>>>>>> Stashed changes:Maps/Map1.tscn
 
 [connection signal="pressed" from="PauseMenu/PaddingContainer/Panel/VerticalBoxContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
 [connection signal="pressed" from="PauseMenu/PaddingContainer/Panel/VerticalBoxContainer/QuitMenuBtn" to="." method="_on_quit_menu_btn_pressed"]
 [connection signal="body_entered" from="Map/Key" to="Map/Key" method="_on_body_entered"]
 [connection signal="body_entered" from="Map/Lever" to="Map/Lever" method="_on_body_entered"]
+<<<<<<< Updated upstream:world.tscn
 [connection signal="body_exited" from="Map/Lever" to="Map/Lever" method="_on_body_exited"]
+=======
+[connection signal="body_entered" from="NavigationRegion3D/Ball/Area3D" to="NavigationRegion3D/Ball" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="NavigationRegion3D/Ball2/Area3D" to="NavigationRegion3D/Ball2" method="_on_area_3d_body_entered"]
+>>>>>>> Stashed changes:Maps/Map1.tscn

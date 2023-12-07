@@ -11,7 +11,7 @@ public partial class World : Node3D
 		key.Connect("SignalPlayerHaveKey", new Callable(GetNode<Area3D>("%ChestArea"), "SetKeyTrue") );
 		GetNode<Node3D>("Map").RemoveChild(key);
 
-		pausemenu = GetNode<CanvasLayer>("%PauseMenu");
+		pausemenu = GetNode<CanvasLayer>("PauseMenu");
 		pausemenu.Hide();
 	}
 	public override void _Process(double delta)
