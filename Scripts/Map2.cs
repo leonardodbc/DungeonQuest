@@ -8,7 +8,7 @@ public partial class Map2 : Node3D
 	public override void _Ready()
 	{
 		key = GetNode<Area3D>("%Key");
-		key.Connect("SignalPlayerHaveKey", new Callable(GetNode<Area3D>("%ChestArea"), "SetKeyTrue") );
+		key.Connect("SignalPlayerHaveKey", new Callable(GetNode<Area3D>("%ChestAreaMap2"), "SetKeyTrue") );
 
 		pausemenu = GetNode<CanvasLayer>("%PauseMenu");
 		pausemenu.Hide();
